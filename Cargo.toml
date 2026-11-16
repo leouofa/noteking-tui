@@ -1,6 +1,6 @@
 [package]
 name = "noteking-tui"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["Leonid Medovyy <leonid@macron1.io>"]
 description = "A fast, keyboard-driven terminal user interface for NoteKing markdown note studio"
