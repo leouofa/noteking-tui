@@ -1,0 +1,30 @@
+[package]
+name = "noteking-tui"
+version = "0.1.0"
+edition = "2021"
+authors = ["Leonid Medovyy <leonid@macron1.io>"]
+description = "A fast, keyboard-driven terminal user interface for NoteKing markdown note studio"
+readme = "README.md"
+repository = "https://github.com/leouofa/NoteKing-TUI"
+license = "MIT"
+keywords = ["tui", "notes", "markdown", "ratatui", "terminal"]
+categories = ["command-line-utilities"]
+
+[lib]
+name = "noteking_tui"
+path = "src/lib.rs"
+
+[[bin]]
+name = "noteking-tui"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.28"
+crossterm = "0.28"
+reqwest = { version = "0.12", features = ["blocking", "json", "multipart"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+unicode-width = "0.1"
+arboard = "3"
+tempfile = "3"
