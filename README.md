@@ -1,7 +1,7 @@
 # noteking-tui
 
 <p align="center">
-  <strong>A fast, keyboard-driven terminal user interface (TUI) for the <a href="https://github.com/leouofa/noteking">NoteKing</a> Markdown note studio and developer workspace.</strong>
+  <strong>A fast, keyboard-driven terminal user interface (TUI) for the <a href="https://github.com/leouofa/noteking">NoteKing</a>. Markdown note studio and developer workspace.</strong>
 </p>
 
 <p align="center">
