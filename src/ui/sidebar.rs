@@ -104,6 +104,55 @@ pub fn render(f: &mut Frame, app: &App, area: Rect) {
         }
     }
 
+    // Divider
+    items.push(ListItem::new(Line::from(Span::styled(
+        " ───────────────────────",
+        Style::default().fg(Color::DarkGray),
+    ))));
+
+    // Pinned Header
+    items.push(ListItem::new(Line::from(Span::styled(
+        "  PINNED",
+        Style::default()
+            .fg(Color::DarkGray)
+            .add_modifier(Modifier::BOLD),
+    ))));
+
+    if app.pinned_notes.is_empty() {
+        items.push(ListItem::new(Line::from(Span::styled(
+            "   (no pinned notes)",
+            Style::default().fg(Color::DarkGray),
+        ))));
+    } else {
+        for (idx, note) in app.pinned_notes.iter().enumerate() {
+            let actual_idx = 3 + app.projects.len() + idx;
+            let is_selected = app.sidebar_selected == actual_idx;
+            let prefix = if is_selected { "▶ " } else { "  " };
+
+            let style = if is_selected {
+                Style::default()
+                    .fg(Color::LightYellow)
+                    .add_modifier(Modifier::BOLD)
+            } else {
+                Style::default().fg(Color::White)
+            };
+
+            let char_count = note.title.chars().count();
+            let name_truncated = if char_count > 22 {
+                let s: String = note.title.chars().take(21).collect();
+                format!("{}…", s)
+            } else {
+                note.title.clone()
+            };
+
+            let line = Line::from(vec![
+                Span::styled(prefix, style),
+                Span::styled(name_truncated, style),
+            ]);
+            items.push(ListItem::new(line));
+        }
+    }
+
     let block = Block::default()
         .borders(Borders::ALL)
         .border_type(BorderType::Rounded)
