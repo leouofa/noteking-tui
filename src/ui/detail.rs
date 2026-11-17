@@ -113,7 +113,10 @@ pub fn render(f: &mut Frame, app: &App, area: Rect) {
         Span::styled(att_text, Style::default().fg(Color::Blue)),
     ]));
 
-    f.render_widget(Paragraph::new(meta_lines), chunks[0]);
+    f.render_widget(
+        Paragraph::new(meta_lines).wrap(Wrap { trim: false }),
+        chunks[0],
+    );
 
     // Divider
     let divider = Paragraph::new(Line::from(Span::styled(

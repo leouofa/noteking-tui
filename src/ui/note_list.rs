@@ -31,6 +31,7 @@ pub fn render(f: &mut Frame, app: &App, area: Rect) {
         ScopeItem::Pinned => "★ Pinned".to_string(),
         ScopeItem::Standalone => "Standalone".to_string(),
         ScopeItem::Project(p) => p.name,
+        ScopeItem::PinnedNote(n) => format!("★ {}", n.title),
     };
 
     let title_text = format!(" [2] Notes ({} · {}) ", scope_name, app.notes.len());
